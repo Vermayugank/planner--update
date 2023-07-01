@@ -138,9 +138,7 @@ select {
   margin-top: 10px;
   padding-bottom: 3px;
 }
-.strike{
-  text-decoration: line-through;
-}
+
 .widget-container {
   background: rgb(182, 182, 209);
   box-shadow: 0 8px 32px 0 rgb(55, 54, 54);

@@ -5,7 +5,7 @@ export default function BookListWidget() {
  
   useEffect(() => {
     let bookList = JSON.parse(localStorage.getItem('bookList')) || []
-    if (!bookList || bookList == "undefined") {
+    if (!bookList || bookList === "undefined") {
       bookList = []
     }
     setBookListData(bookList)
@@ -34,6 +34,7 @@ export default function BookListWidget() {
             setBookListData([...BookListData, {
               title: '',
               datestamp: '',
+              checked: false,
             }])
           }}
         >+ New</button>
@@ -51,6 +52,7 @@ export default function BookListWidget() {
                     setBookListData([...bookList, {
                       title: '',
                       datestamp: '',
+                      checked: false,
                     }])
                   }
                 }}
@@ -58,8 +60,14 @@ export default function BookListWidget() {
                   let bookList = [...BookListData]
                   bookList[index].title = e.target.value
                   bookList[index].datestamp = new Date()
+                  bookList[index].checked=false
                   setBookListData(bookList)
-                }} />
+                }} 
+                style={{
+                  textDecoration:book.checked ? "line-through":"none",
+                }}
+                
+                />
               <input type="checkbox"
                 style={{
                   background: "none",
@@ -68,15 +76,14 @@ export default function BookListWidget() {
                   fontSize: "15px",
                   cursor: "pointer",
                 }}
-                onClick={(e)=>{
-                    console.log(e);
+                onChange={(e)=>{
+                  
+                    let bookList = [...BookListData];
+                    bookList[index].checked = !bookList[index].checked;
+                    setBookListData(bookList)
                     
                 }}
-                // onClick={() => {
-                //   let bookList = [...BookListData]
-                //   bookList.splice(index, 1)
-                //   setBookListData(bookList)
-                // }}
+          
               />
             </div>
           </div>

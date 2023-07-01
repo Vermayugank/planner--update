@@ -41,7 +41,7 @@ export default function WidgetGalleryModal({ setShowWidgetModal, selectedWidgetA
                         id: new Date().getTime(),
                         component: widget.component,
                         area: selectedWidgetArea,
-				 name:widget.name
+				                name:widget.name
                       }])
                       setShowWidgetModal(false)
                     } else {
